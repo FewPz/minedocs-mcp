@@ -1,6 +1,11 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { registerGetPaperClassInfo } from "./tools/getPaperClassInfo.js";
+import { registerSearchPaperClasses } from "./tools/searchPaperClasses.js";
+import { registerGetMethodDetails } from "./tools/getMethodDetails.js";
+import { registerListPackageClasses } from "./tools/listPackageClasses.js";
+import { registerGetFieldSummary } from "./tools/getFieldSummary.js";
+import { registerSearchDeprecated } from "./tools/searchDeprecated.js";
 
 const server = new McpServer({
   name: "minedocs-mcp",
@@ -8,6 +13,11 @@ const server = new McpServer({
 });
 
 registerGetPaperClassInfo(server);
+registerSearchPaperClasses(server);
+registerGetMethodDetails(server);
+registerListPackageClasses(server);
+registerGetFieldSummary(server);
+registerSearchDeprecated(server);
 
 async function main() {
   const transport = new StdioServerTransport();
