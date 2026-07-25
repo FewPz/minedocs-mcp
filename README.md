@@ -21,3 +21,55 @@ git clone https://github.com/FewPz/minedocs-mcp
 cd minedocs-mcp
 pnpm install
 ```
+
+### 2. Build
+```bash
+pnpm build
+```
+This compiles `src/` to `dist/`.
+
+### 3. Configure your MCP client
+Point your client at the compiled entrypoint. Example for Claude Desktop / Cursor (`claude_desktop_config.json` or equivalent):
+
+```json
+{
+  "mcpServers": {
+    "minedocs": {
+      "command": "node",
+      "args": ["/absolute/path/to/minedocs-mcp/dist/server.js"]
+    }
+  }
+}
+```
+
+Replace `/absolute/path/to/minedocs-mcp` with wherever you cloned the repo.
+
+**Alternative (no build step, runs TypeScript directly via tsx):**
+```json
+{
+  "mcpServers": {
+    "minedocs": {
+      "command": "npx",
+      "args": ["tsx", "/absolute/path/to/minedocs-mcp/src/server.ts"]
+    }
+  }
+}
+```
+
+### 4. Restart your client
+Restart Claude Desktop / Cursor so it picks up the new MCP server. The `get_paper_class_info` tool should now be available.
+
+## Usage
+
+Ask your AI assistant something like:
+
+> Look up `org.bukkit.entity.Player` in PaperMC and show me its methods.
+
+The AI will call `get_paper_class_info` with `fullClassName: "org.bukkit.entity.Player"` and get back a Markdown summary of the class signature, description, and method list.
+
+## Development
+
+```bash
+pnpm dev    # tsx watch mode, restarts on file changes
+pnpm build  # type-check and compile to dist/
+```
