@@ -1,4 +1,4 @@
-# Paper-MCP (PaperMC Javadoc MCP Server)
+# MineDocs MCP (PaperMC Javadoc MCP Server)
 
 An open-source Model Context Protocol (MCP) server designed to supercharge your AI assistants (like Claude Desktop and Cursor) with real-time, accurate PaperMC API documentation. built specifically for Minecraft Java Edition plugin developers.
 
@@ -17,6 +17,7 @@ By providing a direct bridge to the official [PaperMC Javadocs](https://jd.paper
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone [https://github.com/yourusername/paper-mcp.git](https://github.com/yourusername/paper-mcp.git)
-cd paper-mcp
-npm install
+git clone https://github.com/FewPz/minedocs-mcp
+cd minedocs-mcp
+pnpm install
+```
